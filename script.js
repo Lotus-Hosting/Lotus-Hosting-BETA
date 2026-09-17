@@ -63,7 +63,7 @@ async function sendDiscordNotification(event) {
     embeds: [
       {
         title: "🚀 Nova Solicitação de Projeto!",
-        color: 10979834, // Cor Roxo Claro em decimal (#A78BFA)
+        color: 10979834, // Cor Roxo Claro (#A78BFA)
         fields: [
           { name: "👤 Cliente / Empresa", value: name, inline: true },
           { name: "📦 Plano Escolhido", value: plan, inline: true },
