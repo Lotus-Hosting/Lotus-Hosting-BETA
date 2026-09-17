@@ -1,5 +1,5 @@
 // CONFIGURAÇÃO DO DISCORD WEBHOOK
-const DISCORD_WEBHOOK_URL = "COLE_SEU_WEBHOOK_DO_DISCORD_AQUI";
+const DISCORD_WEBHOOK_URL = "https://discordapp.com/api/webhooks/1550215201943588997/_hzE5cEiOqcAU-wpCp_7gDa8GbA_KqC_Y8xYq9wz6C9cfvM6eemAoa_xGbtkmNa9dUHd";
 
 // NAVEGAÇÃO ENTRE SUBPÁGINAS / ABAS
 function switchTab(tabId, event) {
@@ -63,7 +63,7 @@ async function sendDiscordNotification(event) {
     embeds: [
       {
         title: "🚀 Nova Solicitação de Projeto!",
-        color: 10979834, // Cor Roxo Claro em decimal
+        color: 10979834, // Cor Roxo Claro em decimal (#A78BFA)
         fields: [
           { name: "👤 Cliente / Empresa", value: name, inline: true },
           { name: "📦 Plano Escolhido", value: plan, inline: true },
