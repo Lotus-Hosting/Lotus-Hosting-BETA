@@ -30,4 +30,5 @@ lotus-hosting/
 ├── index.html     # Estrutura HTML do Hub e subpáginas
 ├── style.css      # Estilização completa, variáveis CSS e temas
 ├── script.js     # Lógica de navegação SPA e integração Webhook Discord
+|__ logo.png      # a nossa logo
 └── README.md      # Documentação do projeto
