@@ -52,15 +52,17 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 1.3rem;
   font-weight: 800;
 }
 
 .logo-img {
-  height: 28px;
-  width: auto;
-  object-fit: contain;
+  height: 38px;
+  width: 38px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 
 .logo .highlight {
