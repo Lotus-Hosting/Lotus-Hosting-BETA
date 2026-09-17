@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lotus Hosting | Hospedagem & Criação de Sites</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- CABEÇALHO / NAVBAR -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <img src="logo.png" alt="Lotus Hosting Logo" class="logo-img">
+        <span class="logo-text">Lotus <span class="highlight">Hosting</span></span>
+      </div>
+      <nav class="nav-menu">
+        <a href="#home" class="nav-link active" onclick="switchTab('home', event)">Início</a>
+        <a href="#planos" class="nav-link" onclick="switchTab('planos', event)">Planos de Sites</a>
+        <a href="#recursos" class="nav-link" onclick="switchTab('recursos', event)">Diferenciais</a>
+        <a href="#contato" class="nav-link" onclick="switchTab('contato', event)">Pedir Site</a>
+      </nav>
+      <div class="status-badge">
+        <span class="status-dot"></span> Sistemas 100% Online
+      </div>
+    </div>
+  </header>
+
+  <!-- SUBPÁGINA 1: INÍCIO (HUB) -->
+  <section id="home" class="tab-content active">
+    <div class="container hero">
+      <span class="badge-purple">Criação & Hospedagem de Alta Performance</span>
+      <h1>Seu site profissional no ar com máxima velocidade e estabilidade</h1>
+      <p>Desenvolvemos seu projeto sob medida com hospedagem SSD NVMe inclusa e suporte dedicado.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-orange" onclick="switchTab('planos', event)">Ver Planos de Sites</button>
+        <button class="btn btn-outline" onclick="switchTab('contato', event)">Falar com Especialista</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBPÁGINA 2: PLANOS DE CRIAÇÃO DE SITES -->
+  <section id="planos" class="tab-content">
+    <div class="container">
+      <div class="section-header">
+        <h2>Planos de Criação & Hospedagem</h2>
+        <p>Escolha a solução ideal para o momento do seu negócio</p>
+      </div>
+
+      <div class="plans-grid">
+        <!-- PLANO 1 -->
+        <div class="plan-card">
+          <div class="plan-title">Starter Site</div>
+          <div class="plan-desc">Ideal para profissionais liberais e autônomos.</div>
+          <div class="plan-price">R$ 499 <span>/único</span></div>
+          <ul class="plan-features">
+            <li>✓ Landing Page ou até 3 Páginas</li>
+            <li>✓ Layout Responsivo (Mobile First)</li>
+            <li>✓ Formulário de Contato Direto</li>
+            <li>✓ Hospedagem Cloud Grátis (1º ano)</li>
+            <li>✓ Certificado SSL Grátis</li>
+          </ul>
+          <button class="btn btn-purple" onclick="selectPlan('Starter Site')">Selecionar Plano</button>
+        </div>
+
+        <!-- PLANO 2 (POPULAR) -->
+        <div class="plan-card popular">
+          <div class="badge-popular">Mais Vendido</div>
+          <div class="plan-title">Pro Business</div>
+          <div class="plan-desc">Focado em autoridade, marcas e alta conversão.</div>
+          <div class="plan-price">R$ 899 <span>/único</span></div>
+          <ul class="plan-features">
+            <li>✓ Site Institucional Completo</li>
+            <li>✓ Botão de WhatsApp Flutuante</li>
+            <li>✓ Otimização de Velocidade (NVMe)</li>
+            <li>✓ Otimização SEO Básico (Google)</li>
+            <li>✓ Hospedagem Premium Inclusa</li>
+          </ul>
+          <button class="btn btn-orange" onclick="selectPlan('Pro Business')">Selecionar Plano</button>
+        </div>
+
+        <!-- PLANO 3 -->
+        <div class="plan-card">
+          <div class="plan-title">Custom / E-commerce</div>
+          <div class="plan-desc">Lojas virtuais e sistemas sob medida.</div>
+          <div class="plan-price">Sob Consulta</div>
+          <ul class="plan-features">
+            <li>✓ Catálogo Completo / Loja Virtual</li>
+            <li>✓ Meios de Pagamento Integrados</li>
+            <li>✓ Painel de Gestão de Conteúdo</li>
+            <li>✓ Servidor Dedicado de Alta Performance</li>
+            <li>✓ Suporte Prioritário 24/7</li>
+          </ul>
+          <button class="btn btn-purple" onclick="selectPlan('Custom / E-commerce')">Solicitar Orçamento</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBPÁGINA 3: RECURSOS E DIFERENCIAIS -->
+  <section id="recursos" class="tab-content">
+    <div class="container">
+      <div class="section-header">
+        <h2>Por que escolher a Lotus Hosting?</h2>
+        <p>Infraestrutura e design combinados em uma única plataforma</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon">⚡</div>
+          <h3>Velocidade Extrema</h3>
+          <p>Servidores com discos NVMe e otimização de código para carregamento ultrarrápido.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">🛡️</div>
+          <h3>Segurança Total</h3>
+          <p>Proteção contra ataques DDoS, SSL gratuito e rotina de backups automáticos.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">💬</div>
+          <h3>Notificações Instantâneas</h3>
+          <p>Seus formulários e vendas chegam diretamente no seu canal ou WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBPÁGINA 4: FORMULÁRIO DE PEDIDO (NOTIFICA NO DISCORD) -->
+  <section id="contato" class="tab-content">
+    <div class="container form-container">
+      <div class="section-header">
+        <h2>Solicite seu Site</h2>
+        <p>Preencha os dados abaixo. Nossa equipe entrará em contato em instantes!</p>
+      </div>
+
+      <form id="orderForm" onsubmit="sendDiscordNotification(event)">
+        <div class="form-group">
+          <label for="name">Seu Nome / Empresa *</label>
+          <input type="text" id="name" required placeholder="Ex: João Silva - Silva Advocacia">
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" required placeholder="contato@suaempresa.com">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">WhatsApp / Telefone *</label>
+          <input type="tel" id="phone" required placeholder="(11) 99999-9999">
+        </div>
+
+        <div class="form-group">
+          <label for="plan">Plano de Interesse *</label>
+          <select id="plan" required>
+            <option value="Starter Site">Plano Starter Site (R$ 499)</option>
+            <option value="Pro Business">Plano Pro Business (R$ 899)</option>
+            <option value="Custom / E-commerce">Plano Custom / E-commerce</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="details">Detalhes do Projeto (Opcional)</label>
+          <textarea id="details" rows="4" placeholder="Descreva brevemente como deseja o seu site..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-orange btn-block" id="submitBtn">Enviar Solicitação</button>
+        <div id="formStatus" class="form-status"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Lotus Hosting. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
