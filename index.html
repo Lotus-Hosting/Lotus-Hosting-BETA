@@ -158,11 +158,27 @@
 
         <div class="form-group">
           <label for="plan">Plano de Interesse *</label>
-          <select id="plan" required>
+          <select id="plan" required onchange="updatePriceDisplay()">
             <option value="Starter Site">Plano Starter Site (R$ 499)</option>
             <option value="Pro Business">Plano Pro Business (R$ 899)</option>
-            <option value="Custom / E-commerce">Plano Custom / E-commerce</option>
+            <option value="Custom / E-commerce">Plano Custom / E-commerce (Sob Consulta)</option>
           </select>
+        </div>
+
+        <!-- CAMPO DE CUPOM DE DESCONTO -->
+        <div class="form-group">
+          <label for="couponInput">Cupom de Desconto</label>
+          <div class="coupon-box">
+            <input type="text" id="couponInput" placeholder="Ex: LOTUS10" style="text-transform: uppercase;">
+            <button type="button" class="btn btn-purple" onclick="applyCoupon()">Aplicar</button>
+          </div>
+          <div id="couponStatus" class="coupon-status"></div>
+        </div>
+
+        <!-- RESUMO DO VALOR -->
+        <div class="price-summary" id="priceSummary">
+          <span>Valor Estimado:</span>
+          <strong id="finalPriceDisplay">R$ 499,00</strong>
         </div>
 
         <div class="form-group">
