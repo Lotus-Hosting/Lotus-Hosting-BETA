@@ -3,199 +3,338 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lotus Hosting | Hospedagem & Criação de Sites</title>
+  <title>Lotus Hosting — Planos de Criação & Hospedagem</title>
   
-  <!-- Ícone da aba do navegador / barra de pesquisas (Favicon) -->
-  <link rel="icon" type="image/png" href="./logo.png">
-  
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="style.css">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- CABEÇALHO / NAVBAR -->
+  <!-- CABEÇALHO / NAVEGAÇÃO -->
   <header class="header">
     <div class="container nav-container">
-      <div class="logo">
-        <img src="./S-logo.png" alt="Lotus Hosting Logo" class="logo-img">
+      <a href="#inicio" class="logo nav-link">
+        <img src="SB-logo.png" alt="Lotus Hosting Logo" class="logo-img">
         <span class="logo-text">Lotus <span class="highlight">Hosting</span></span>
-      </div>
+      </a>
       <nav class="nav-menu">
-        <a href="#home" class="nav-link active" onclick="switchTab('home', event)">Início</a>
-        <a href="#planos" class="nav-link" onclick="switchTab('planos', event)">Planos de Sites</a>
-        <a href="#recursos" class="nav-link" onclick="switchTab('recursos', event)">Diferenciais</a>
-        <a href="#contato" class="nav-link" onclick="switchTab('contato', event)">Pedir Site</a>
+        <a href="#inicio" class="nav-link">Início</a>
+        <a href="#planos" class="nav-link active">Planos de Sites</a>
+        <a href="#diferenciais" class="nav-link">Diferenciais</a>
+        <a href="#contato" class="nav-link">Contato</a>
+        <a href="#pedir-site" class="nav-link">Pedir Site</a>
+        <a href="#avaliacoes" class="nav-link">Avaliações</a>
       </nav>
       <div class="status-badge">
-        <span class="status-dot"></span> Sistemas 100% Online
+        <span class="status-dot"></span>
+        <span>Sistemas 100% Online</span>
       </div>
     </div>
   </header>
 
-  <!-- SUBPÁGINA 1: INÍCIO (HUB) -->
-  <section id="home" class="tab-content active">
-    <div class="container hero">
-      <span class="badge-purple">Criação & Hospedagem de Alta Performance</span>
-      <h1>Seu site profissional no ar com máxima velocidade e estabilidade</h1>
-      <p>Desenvolvemos seu projeto sob medida com hospedagem SSD NVMe inclusa e suporte dedicado.</p>
-      <div class="hero-buttons">
-        <button class="btn btn-orange" onclick="switchTab('planos', event)">Ver Planos de Sites</button>
-        <button class="btn btn-outline" onclick="switchTab('contato', event)">Falar com Especialista</button>
+  <!-- PÁGINA: INÍCIO (HERO) -->
+  <section id="inicio" class="page-section">
+    <div class="hero">
+      <div class="container hero-content">
+        <span class="badge">AGÊNCIA DE EXPERIÊNCIAS DIGITAIS</span>
+        <h1>Seu projeto merece uma presença digital <span class="purple-text">à altura</span></h1>
+        <p>Desenvolvemos websites modernos, rápidos e personalizados para transformar ideias em experiências digitais que convertem e impressionam.</p>
+        <div class="hero-btns">
+          <a href="#planos" class="btn btn-purple nav-link">Ver Planos</a>
+          <a href="#pedir-site" class="btn btn-secondary nav-link">Pedir Site Customizado</a>
+          <a href="#avaliacoes" class="btn btn-secondary nav-link">Deixar Avaliação</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SUBPÁGINA 2: PLANOS DE CRIAÇÃO DE SITES -->
-  <section id="planos" class="tab-content">
-    <div class="container">
+  <!-- PÁGINA: PLANOS DE SITES -->
+  <section id="planos" class="page-section active">
+    <div class="container pricing-section">
       <div class="section-header">
         <h2>Planos de Criação & Hospedagem</h2>
-        <p>Escolha a solução ideal para o momento do seu negócio</p>
+        <p class="section-subtitle">Escolha a solução ideal para o momento do seu negócio</p>
       </div>
 
-      <div class="plans-grid">
-        <!-- PLANO 1 -->
-        <div class="plan-card">
-          <div class="plan-title">Starter Site</div>
-          <div class="plan-desc">Ideal para profissionais liberais e autônomos.</div>
-          <div class="plan-price">R$ 499 <span>/único</span></div>
-          <ul class="plan-features">
-            <li>✓ Landing Page ou até 3 Páginas</li>
-            <li>✓ Layout Responsivo (Mobile First)</li>
-            <li>✓ Formulário de Contato Direto</li>
-            <li>✓ Hospedagem Cloud Grátis (1º ano)</li>
-            <li>✓ Certificado SSL Grátis</li>
+      <div class="pricing-grid">
+        <!-- PLANO 1: STARTER SITE -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Starter Site</h3>
+            <p class="plan-desc">Ideal para landing pages, portfólios simples ou pequenos negócios.</p>
+            <div class="price">R$ 29,90 <span class="period">/único</span></div>
+          </div>
+          <ul class="features-list">
+            <li>✓ 1 Página Principal (Landing Page)</li>
+            <li>✓ Design Moderno e Responsivo (Celular e PC)</li>
+            <li>✓ Formulário de Contato Direto via E-mail/Discord</li>
+            <li>✓ Botões de Redes Sociais Integrados</li>
+            <li>✓ Suporte Básico para Publicação Gratuita</li>
           </ul>
-          <button class="btn btn-purple" onclick="selectPlan('Starter Site')">Selecionar Plano</button>
+          <a href="#pedir-site" class="btn btn-purple-card nav-link" data-plan="Starter Site">Selecionar Plano</a>
         </div>
 
-        <!-- PLANO 2 (POPULAR) -->
-        <div class="plan-card popular">
-          <div class="badge-popular">Mais Vendido</div>
-          <div class="plan-title">Pro Business</div>
-          <div class="plan-desc">Focado em autoridade, marcas e alta conversão.</div>
-          <div class="plan-price">R$ 899 <span>/único</span></div>
-          <ul class="plan-features">
-            <li>✓ Site Institucional Completo</li>
-            <li>✓ Botão de WhatsApp Flutuante</li>
-            <li>✓ Otimização de Velocidade (NVMe)</li>
-            <li>✓ Otimização SEO Básico (Google)</li>
-            <li>✓ Hospedagem Premium Inclusa</li>
+        <!-- PLANO 2: COMBO MINECRAFT (POPULAR) -->
+        <div class="pricing-card featured">
+          <span class="top-tag">Mais Vendido</span>
+          <div class="pricing-header">
+            <h3>Combo Minecraft</h3>
+            <p class="plan-desc">Estrutura visual focada em comunidades e servidores de Minecraft.</p>
+            <div class="price">R$ 39,90 <span class="period">/único</span></div>
+          </div>
+          <ul class="features-list">
+            <li>✓ Layout Temático Personalizado para Minecraft</li>
+            <li>✓ Botão de "Copiar IP" Automático com Contador de Jogadores</li>
+            <li>✓ Redirecionamento Direto para Loja (Tebex/CraftingStore)</li>
+            <li>✓ Galeria de Imagens/Prints do Servidor</li>
+            <li>✓ Links Rápidos para Discord e Regras</li>
           </ul>
-          <button class="btn btn-orange" onclick="selectPlan('Pro Business')">Selecionar Plano</button>
+          <a href="#pedir-site" class="btn btn-orange-card nav-link" data-plan="Combo Minecraft">Selecionar Plano</a>
         </div>
 
-        <!-- PLANO 3 -->
-        <div class="plan-card">
-          <div class="plan-title">Custom / E-commerce</div>
-          <div class="plan-desc">Lojas virtuais e sistemas sob medida.</div>
-          <div class="plan-price">Sob Consulta</div>
-          <ul class="plan-features">
-            <li>✓ Catálogo Completo / Loja Virtual</li>
-            <li>✓ Meios de Pagamento Integrados</li>
-            <li>✓ Painel de Gestão de Conteúdo</li>
-            <li>✓ Servidor Dedicado de Alta Performance</li>
-            <li>✓ Suporte Prioritário 24/7</li>
+        <!-- PLANO 3: PRO BUSINESS -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Pro Business</h3>
+            <p class="plan-desc">Para empresas e marcas que precisam de múltiplos conteúdos e autoridade.</p>
+            <div class="price">R$ 79,90 <span class="period">/único</span></div>
+          </div>
+          <ul class="features-list">
+            <li>✓ Até 3 Páginas (Início, Serviços, Contato/Sobre)</li>
+            <li>✓ Botão Flutuante de WhatsApp Integrado</li>
+            <li>✓ Otimização Rápida de Carregamento</li>
+            <li>✓ Design Customizado com Suas Cores e Logo</li>
+            <li>✓ Formulário Completo de Orçamento no Discord</li>
           </ul>
-          <button class="btn btn-purple" onclick="selectPlan('Custom / E-commerce')">Solicitar Orçamento</button>
+          <a href="#pedir-site" class="btn btn-purple-card nav-link" data-plan="Pro Business">Selecionar Plano</a>
+        </div>
+
+        <!-- PLANO 4: CUSTOM / E-COMMERCE -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Custom / E-commerce</h3>
+            <p class="plan-desc">Lojas virtuais e projetos complexos sob medida.</p>
+            <div class="price text-purple">Sob Consulta</div>
+          </div>
+          <ul class="features-list">
+            <li>✓ Catálogo Completo de Produtos/Serviços</li>
+            <li>✓ Integrações Avançadas e APIs</li>
+            <li>✓ Painel de Gestão Personalizado</li>
+            <li>✓ Funcionalidades Exclusivas Sob Demanda</li>
+            <li>✓ Atendimento e Desenvolvimento Prioritário</li>
+          </ul>
+          <a href="#pedir-site" class="btn btn-purple-card nav-link" data-plan="Custom / E-commerce">Solicitar Orçamento</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SUBPÁGINA 3: RECURSOS E DIFERENCIAIS -->
-  <section id="recursos" class="tab-content">
-    <div class="container">
+  <!-- PÁGINA: DIFERENCIAIS -->
+  <section id="diferenciais" class="page-section">
+    <div class="container services-preview">
       <div class="section-header">
-        <h2>Por que escolher a Lotus Hosting?</h2>
-        <p>Infraestrutura e design combinados em uma única plataforma</p>
+        <span class="badge">POR QUE A LOTUS?</span>
+        <h2>Diferenciais dos nossos sistemas</h2>
       </div>
-      <div class="features-grid">
-        <div class="feature-box">
-          <div class="feature-icon">⚡</div>
-          <h3>Velocidade Extrema</h3>
-          <p>Servidores com discos NVMe e otimização de código para carregamento ultrarrápido.</p>
+      <div class="grid-container">
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Código Limpo e Ultra-rápido</h3>
+          <p>Carregamento veloz para garantir excelente experiência de navegação aos seus visitantes.</p>
         </div>
-        <div class="feature-box">
-          <div class="feature-icon">🛡️</div>
-          <h3>Segurança Total</h3>
-          <p>Proteção contra ataques DDoS, SSL gratuito e rotina de backups automáticos.</p>
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>Segurança & Praticidade</h3>
+          <p>Estrutura segura, pronta para rodar em hospedagens modernas e gratuitas.</p>
         </div>
-        <div class="feature-box">
-          <div class="feature-icon">💬</div>
-          <h3>Notificações Instantâneas</h3>
-          <p>Seus formulários e vendas chegam diretamente no seu canal do Discord ou WhatsApp.</p>
+        <div class="card">
+          <div class="card-icon">📱</div>
+          <h3>Mobile First Design</h3>
+          <p>Layouts adaptados perfeitamente a telemóveis, tablets e monitores de alta resolução.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SUBPÁGINA 4: FORMULÁRIO DE PEDIDO (NOTIFICA NO DISCORD) -->
-  <section id="contato" class="tab-content">
-    <div class="container form-container">
+  <!-- PÁGINA: CONTATO -->
+  <section id="contato" class="page-section">
+    <div class="container contact-section">
       <div class="section-header">
-        <h2>Solicite seu Site</h2>
-        <p>Preencha os dados abaixo. Nossa equipe entrará em contato em instantes!</p>
+        <span class="badge">NOSSOS CANAIS</span>
+        <h2>Entre em Contato Conosco</h2>
+        <p class="section-subtitle">Escolha a plataforma de sua preferência para atendimento direto</p>
       </div>
 
-      <form id="orderForm" onsubmit="sendDiscordNotification(event)">
+      <div class="contact-grid">
+        <!-- DISCORD -->
+        <div class="contact-card card-discord">
+          <div class="contact-icon">💬</div>
+          <h3>Discord Oficial</h3>
+          <p>Junte-se à nossa comunidade e fale com o suporte em tempo real.</p>
+          <a href="https://discord.gg/ZUFbwaAa7u" target="_blank" rel="noopener noreferrer" class="btn-social btn-discord">Acessar Discord</a>
+        </div>
+
+        <!-- GMAIL -->
+        <div class="contact-card card-gmail">
+          <div class="contact-icon">✉️</div>
+          <h3>E-mail / Gmail</h3>
+          <p>Envie-nos uma mensagem diretamente para nossa caixa de entrada.</p>
+          <a href="mailto:lotushosting.empresa@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-social btn-gmail">Enviar E-mail</a>
+        </div>
+
+        <!-- WHATSAPP -->
+        <div class="contact-card card-whatsapp">
+          <div class="contact-icon">📱</div>
+          <h3>WhatsApp</h3>
+          <p>Atendimento rápido e personalizado pelo WhatsApp.</p>
+          <a href="https://wa.me/556399501916" target="_blank" rel="noopener noreferrer" class="btn-social btn-whatsapp">Abrir WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- CATEGORIA: YOUTUBE / ANÚNCIOS -->
+      <div class="announcement-box">
+        <span class="new-category-tag">NOVA CATEGORIA!</span>
+        <h3>CANAL YOUTUBE / ANÚNCIOS</h3>
+        <p>Acompanhe nossos tutoriais, anúncios de serviços e atualizações exclusivas no YouTube.</p>
+        <a href="https://www.youtube.com/results?search_query=Lotus+Hosting" target="_blank" rel="noopener noreferrer" class="btn-social btn-youtube">Acessar Canal Lotus Hosting</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÁGINA: PEDIR SITE (FORMULÁRIO DE PEDIDO) -->
+  <section id="pedir-site" class="page-section">
+    <div class="container hero-content" style="padding: 60px 20px;">
+      <div class="section-header">
+        <h2>Fazer Pedido de Site</h2>
+        <p class="section-subtitle">Preencha o formulário para enviar seu projeto diretamente ao nosso Discord</p>
+      </div>
+      
+      <form id="discord-form" class="order-form">
         <div class="form-group">
-          <label for="name">Seu Nome / Empresa *</label>
-          <input type="text" id="name" required placeholder="Ex: João Silva - Silva Advocacia">
+          <label>Seu Nome / Empresa *</label>
+          <input type="text" id="nome" required placeholder="Ex: João Silva - Silva Advocacia">
         </div>
 
         <div class="form-group">
-          <label for="email">E-mail *</label>
+          <label>E-mail *</label>
           <input type="email" id="email" required placeholder="contato@suaempresa.com">
         </div>
 
         <div class="form-group">
-          <label for="phone">WhatsApp / Telefone *</label>
-          <input type="tel" id="phone" required placeholder="(11) 99999-9999">
+          <label>WhatsApp / Telefone *</label>
+          <input type="text" id="whatsapp" required placeholder="(11) 99999-9999">
         </div>
 
         <div class="form-group">
-          <label for="plan">Plano de Interesse *</label>
-          <select id="plan" required onchange="updatePriceDisplay()">
-            <option value="Starter Site">Plano Starter Site (R$ 499)</option>
-            <option value="Pro Business">Plano Pro Business (R$ 899)</option>
-            <option value="Custom / E-commerce">Plano Custom / E-commerce (Sob Consulta)</option>
+          <label>Plano de Interesse *</label>
+          <select id="tipo_projeto">
+            <option value="29.90" data-name="Plano Starter Site (R$ 29,90)">Plano Starter Site (R$ 29,90)</option>
+            <option value="39.90" data-name="Plano Combo Minecraft (R$ 39,90)">Plano Combo Minecraft (R$ 39,90)</option>
+            <option value="79.90" data-name="Plano Pro Business (R$ 79,90)">Plano Pro Business (R$ 79,90)</option>
+            <option value="0" data-name="Plano Custom / E-commerce (Sob Consulta)">Plano Custom / E-commerce (Sob Consulta)</option>
           </select>
         </div>
 
-        <!-- CAMPO DE CUPOM DE DESCONTO -->
+        <!-- SESSÃO DE CUPOM DE DESCONTO -->
         <div class="form-group">
-          <label for="couponInput">Cupom de Desconto</label>
+          <label>Cupom de Desconto</label>
           <div class="coupon-box">
-            <input type="text" id="couponInput" placeholder="Ex: LOTUS10" style="text-transform: uppercase;">
-            <button type="button" class="btn btn-purple" onclick="applyCoupon()">Aplicar</button>
+            <input type="text" id="cupom_input" placeholder="EX: LOTUS15">
+            <button type="button" id="btn-cupom" class="btn-apply">Aplicar</button>
           </div>
-          <div id="couponStatus" class="coupon-status"></div>
+          <span id="cupom-status" class="cupom-status-msg"></span>
         </div>
 
-        <!-- RESUMO DO VALOR -->
-        <div class="price-summary" id="priceSummary">
+        <!-- PAINEL DE VALOR ESTIMADO -->
+        <div class="price-display-box">
           <span>Valor Estimado:</span>
-          <strong id="finalPriceDisplay">R$ 499,00</strong>
+          <span id="valor-estimado" class="price-value">R$ 29,90</span>
         </div>
 
         <div class="form-group">
-          <label for="details">Detalhes do Projeto (Opcional)</label>
-          <textarea id="details" rows="4" placeholder="Descreva brevemente como deseja o seu site..."></textarea>
+          <label>Detalhes do Projeto (Opcional)</label>
+          <textarea id="mensagem" rows="4" placeholder="Descreva brevemente como deseja o seu site..."></textarea>
         </div>
 
-        <button type="submit" class="btn btn-orange btn-block" id="submitBtn">Enviar Solicitação</button>
-        <div id="formStatus" class="form-status"></div>
+        <button type="submit" id="btn-enviar" class="btn btn-purple btn-full">Enviar Pedido de Orçamento</button>
+        <p id="form-status" class="form-status-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- PÁGINA: AVALIAÇÕES (NOVO FORMULÁRIO) -->
+  <section id="avaliacoes" class="page-section">
+    <div class="container hero-content" style="padding: 60px 20px;">
+      <div class="section-header">
+        <h2>Avaliações de Clientes</h2>
+        <p class="section-subtitle">Sua opinião é fundamental! Envie seu feedback sobre os nossos serviços.</p>
+      </div>
+
+      <form id="avaliacao-form" class="order-form">
+        <div class="form-group">
+          <label>Seu Nome ou Nickname *</label>
+          <input type="text" id="avaliacao-nome" required placeholder="Ex: Lucas / @lucas_mc">
+        </div>
+
+        <div class="form-group">
+          <label>Projeto ou Serviço Contratado *</label>
+          <input type="text" id="avaliacao-servico" required placeholder="Ex: Combo Minecraft / Starter Site">
+        </div>
+
+        <div class="form-group">
+          <label>Sua Nota (1 a 5 Estrelas) *</label>
+          <select id="avaliacao-nota" required>
+            <option value="⭐⭐⭐⭐⭐ (5/5)">⭐⭐⭐⭐⭐ - Excelente!</option>
+            <option value="⭐⭐⭐⭐ (4/5)">⭐⭐⭐⭐ - Muito Bom</option>
+            <option value="⭐⭐⭐ (3/5)">⭐⭐⭐ - Bom / Regular</option>
+            <option value="⭐⭐ (2/5)">⭐⭐ - Precisa Melhorar</option>
+            <option value="⭐ (1/5)">⭐ - Ruim</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Sua Avaliação / Comentário *</label>
+          <textarea id="avaliacao-comentario" rows="4" required placeholder="Conta pra gente o que achou do atendimento, prazo e do site final..."></textarea>
+        </div>
+
+        <button type="submit" id="btn-enviar-avaliacao" class="btn btn-purple btn-full">Enviar Avaliação</button>
+        <p id="avaliacao-form-status" class="form-status-msg"></p>
       </form>
     </div>
   </section>
 
   <!-- RODAPÉ -->
   <footer class="footer">
-    <div class="container">
-      <p>© 2026 Lotus Hosting. Todos os direitos reservados.</p>
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo nav-link">
+          <img src="SB-logo.png" alt="Lotus Hosting Logo" class="logo-img">
+          <span class="logo-text">Lotus <span class="highlight">Hosting</span></span>
+        </a>
+        <p>Criação de websites, hospedagem e experiências digitais de alta performance.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <a href="#inicio" class="nav-link">Início</a>
+        <a href="#planos" class="nav-link">Planos de Sites</a>
+        <a href="#diferenciais" class="nav-link">Diferenciais</a>
+        <a href="#contato" class="nav-link">Contato</a>
+        <a href="#pedir-site" class="nav-link">Pedir Site</a>
+        <a href="#avaliacoes" class="nav-link">Avaliações</a>
+      </div>
+      <div class="footer-links">
+        <h4>Canais</h4>
+        <a href="https://discord.gg/ZUFbwaAa7u" target="_blank">Discord</a>
+        <a href="https://wa.me/556399501916" target="_blank">WhatsApp</a>
+        <a href="mailto:lotushosting.empresa@gmail.com" target="_blank">Gmail</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 Lotus Hosting. Todos os direitos reservados.</p>
     </div>
   </footer>
 
