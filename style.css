@@ -1,467 +1,227 @@
-:root {
-  --bg-color: #0B0C10;
-  --card-bg: #12141D;
-  --card-border: rgba(255, 255, 255, 0.25);
-  --purple-primary: #8B5CF6;
-  --purple-light: #A78BFA;
-  --purple-glow: rgba(139, 92, 246, 0.2);
-  --orange-primary: #FF6B00;
-  --orange-hover: #E05E00;
-  --green-online: #10B981;
-  --text-main: #FFFFFF;
-  --text-muted: #9CA3AF;
-  --border-radius: 16px;
-
-  /* COR DAS REDES SOCIAIS / PLATAFORMAS */
-  --discord-color: #5865F2;
-  --gmail-color: #EA4335;
-  --whatsapp-color: #25D366;
-  --youtube-color: #FF0000;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  padding-top: 80px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.page-section {
-  display: none;
-}
-
-.page-section.active {
-  display: block;
-}
-
-/* HEADER */
-.header {
-  background: rgba(11, 12, 16, 0.9);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--card-border);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--text-main);
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-.logo-img {
-  height: 32px;
-  width: auto;
-}
-
-.logo .highlight {
-  color: var(--purple-light);
-}
-
-.nav-menu {
-  display: flex;
-  gap: 24px;
-}
-
-.nav-link {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
-  cursor: pointer;
-}
-
-.nav-link:hover, .nav-link.active {
-  color: var(--purple-light);
-}
-
-.status-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 6px 16px;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  color: var(--green-online);
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--green-online);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--green-online);
-}
-
-/* HERO */
-.hero {
-  padding: 80px 0 60px 0;
-  text-align: center;
-}
-
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.purple-text {
-  color: var(--purple-light);
-}
-
-.hero p {
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-}
-
-.hero-btns {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* PRICING */
-.pricing-section, .contact-section {
-  padding: 40px 0 80px 0;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.section-header h2 {
-  font-size: 2.4rem;
-  font-weight: 700;
-}
-
-.section-subtitle {
-  color: var(--text-muted);
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-}
-
-.pricing-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--border-radius);
-  padding: 35px 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.pricing-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.6);
-}
-
-.pricing-card.featured {
-  border-color: var(--orange-primary);
-  box-shadow: 0 0 25px rgba(255, 107, 0, 0.12);
-}
-
-.top-tag {
-  position: absolute;
-  top: -14px;
-  right: 28px;
-  background-color: var(--orange-primary);
-  color: #FFF;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 14px;
-  border-radius: 50px;
-}
-
-.price {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 25px;
-}
-
-.features-list {
-  list-style: none;
-  margin-bottom: 30px;
-}
-
-.features-list li {
-  color: #D1D5DB;
-  font-size: 0.92rem;
-  margin-bottom: 12px;
-}
-
-/* CARDS DE CONTATO INDIVIDUAIS */
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  margin-bottom: 40px;
-}
-
-.contact-card {
-  background-color: var(--card-bg);
-  border-radius: var(--border-radius);
-  padding: 30px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.contact-card h3 {
-  font-size: 1.3rem;
-  margin: 10px 0;
-}
-
-.contact-card p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-/* CORES DOS CARDS E BOTÕES */
-.card-discord { border: 1px solid var(--discord-color); }
-.card-discord:hover { box-shadow: 0 0 20px rgba(88, 101, 242, 0.25); transform: translateY(-4px); }
-
-.card-gmail { border: 1px solid var(--gmail-color); }
-.card-gmail:hover { box-shadow: 0 0 20px rgba(234, 67, 53, 0.25); transform: translateY(-4px); }
-
-.card-whatsapp { border: 1px solid var(--whatsapp-color); }
-.card-whatsapp:hover { box-shadow: 0 0 20px rgba(37, 211, 102, 0.25); transform: translateY(-4px); }
-
-.btn-social {
-  display: inline-block;
-  width: 100%;
-  padding: 12px 0;
-  border-radius: 8px;
-  font-weight: 700;
-  text-decoration: none;
-  color: #FFF;
-  transition: opacity 0.2s ease;
-}
-
-.btn-social:hover { opacity: 0.9; }
-
-.btn-discord { background-color: var(--discord-color); }
-.btn-gmail { background-color: var(--gmail-color); }
-.btn-whatsapp { background-color: var(--whatsapp-color); }
-.btn-youtube { background-color: var(--youtube-color); }
-
-/* CATEGORIA YOUTUBE / ANÚNCIOS */
-.announcement-box {
-  background-color: var(--card-bg);
-  border: 1px solid var(--youtube-color);
-  border-radius: var(--border-radius);
-  padding: 35px;
-  text-align: center;
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.announcement-box:hover { box-shadow: 0 0 20px rgba(255, 0, 0, 0.2); }
-
-.new-category-tag {
-  background-color: var(--youtube-color);
-  color: #FFF;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 14px;
-  border-radius: 50px;
-  display: inline-block;
-  margin-bottom: 12px;
-}
-
-.announcement-box h3 { font-size: 1.5rem; margin-bottom: 10px; }
-.announcement-box p { color: var(--text-muted); margin-bottom: 20px; }
-.announcement-box .btn-youtube { max-width: 300px; margin: 0 auto; }
-
-/* CARDS DIFERENCIAIS */
-.card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--border-radius);
-  padding: 24px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.card:hover {
-  border-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-3px);
-}
-
-.card-icon, .contact-icon { font-size: 2.2rem; }
-.card h3 { font-size: 1.2rem; margin-bottom: 10px; }
-.card p { color: var(--text-muted); font-size: 0.9rem; }
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-/* FORMULÁRIO DE PEDIDO E AVALIAÇÃO */
-.order-form {
-  max-width: 550px;
-  margin: 0 auto;
-  text-align: left;
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--card-border);
-}
-
-.form-group { margin-bottom: 18px; }
-
-.form-group label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 0.9rem;
-  color: #FFF;
-  font-weight: 600;
-}
-
-.form-group input, 
-.form-group select, 
-.form-group textarea {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid var(--card-border);
-  background: #0D0E15;
-  color: #FFF;
-  outline: none;
-  font-size: 0.95rem;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: rgba(255, 255, 255, 0.6);
-}
-
-.coupon-box { display: flex; gap: 10px; }
-.coupon-box input { flex: 1; }
-
-.btn-apply {
-  background-color: #A78BFA;
-  color: #000;
-  font-weight: 700;
-  border: none;
-  padding: 0 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn-apply:hover { background-color: #C4B5FD; }
-
-.cupom-status-msg, .form-status-msg {
-  display: block;
-  font-size: 0.85rem;
-  margin-top: 10px;
-  font-weight: 500;
-  text-align: center;
-}
-
-/* QUADRO DE PREÇO ESTIMADO */
-.price-display-box {
-  background: #171A26;
-  border: 1px solid var(--card-border);
-  padding: 16px 20px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 22px 0;
-}
-
-.price-display-box span { font-weight: 600; font-size: 1.05rem; }
-
-.price-value {
-  color: #10B981;
-  font-size: 1.35rem;
-  font-weight: 700;
-}
-
-.btn {
-  padding: 12px 24px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-}
-
-.btn-purple { background-color: var(--purple-primary); color: #FFF; }
-.btn-purple-card { background-color: #A78BFA; color: #000; font-weight: 700; width: 100%; }
-.btn-orange-card { background-color: var(--orange-primary); color: #FFF; font-weight: 700; width: 100%; }
-.btn-secondary { background-color: transparent; color: var(--text-main); border: 1px solid var(--card-border); }
-.btn-full { width: 100%; border-radius: 8px; }
-
-.footer {
-  background-color: var(--card-bg);
-  border-top: 1px solid var(--card-border);
-  margin-top: 80px;
-  padding: 50px 0 20px 0;
-}
-
-.footer-container {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 40px;
-}
-
-.footer-bottom {
-  border-top: 1px solid var(--card-border);
-  padding-top: 20px;
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  margin-top: 40px;
-}
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. TROCA DE PÁGINAS (SPA)
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.page-section');
+  const selectPlano = document.getElementById('tipo_projeto');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+
+      if (link.getAttribute('target') === '_blank' || (href && href.startsWith('http'))) {
+        return;
+      }
+
+      e.preventDefault();
+      if (!href || !href.startsWith('#')) return;
+
+      const targetId = href.replace('#', '');
+
+      // Seleção automática do plano ao clicar num card
+      const planName = link.getAttribute('data-plan');
+      if (planName && selectPlano) {
+        for (let option of selectPlano.options) {
+          const nameAttribute = option.getAttribute('data-name');
+          if (nameAttribute && nameAttribute.includes(planName)) {
+            option.selected = true;
+            atualizarValor();
+            break;
+          }
+        }
+      }
+
+      sections.forEach(sec => sec.classList.remove('active'));
+      navLinks.forEach(l => l.classList.remove('active'));
+
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        const menuMatch = document.querySelectorAll(`.nav-menu a[href="#${targetId}"]`);
+        menuMatch.forEach(m => m.classList.add('active'));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // 2. SISTEMA DE PREÇOS E CUPONS DE DESCONTO
+  const cupomInput = document.getElementById('cupom_input');
+  const btnCupom = document.getElementById('btn-cupom');
+  const cupomStatus = document.getElementById('cupom-status');
+  const valorDisplay = document.getElementById('valor-estimado');
+
+  let descontoAtivo = 0;
+  let cupomNomeAtivo = "";
+
+  function atualizarValor() {
+    if (!selectPlano || !valorDisplay) return;
+    
+    const precoBase = parseFloat(selectPlano.value);
+
+    if (precoBase === 0) {
+      valorDisplay.innerText = "Sob Consulta";
+      return;
+    }
+
+    const valorComDesconto = precoBase * (1 - descontoAtivo);
+    valorDisplay.innerText = `R$ ${valorComDesconto.toFixed(2).replace('.', ',')}`;
+  }
+
+  // APLICAÇÃO DE CUPOM
+  if (btnCupom) {
+    btnCupom.addEventListener('click', () => {
+      const codigo = cupomInput.value.trim().toUpperCase();
+
+      if (codigo === 'VIN30') {
+        descontoAtivo = 0.30;
+        cupomNomeAtivo = 'VIN30';
+        cupomStatus.style.color = '#10B981';
+        cupomStatus.innerText = '✓ Cupom VIN30 aplicado com sucesso! (30% OFF)';
+      } else if (codigo === 'LOTUS15') {
+        descontoAtivo = 0.15;
+        cupomNomeAtivo = 'LOTUS15';
+        cupomStatus.style.color = '#10B981';
+        cupomStatus.innerText = '✓ Cupom LOTUS15 aplicado com sucesso! (15% OFF)';
+      } else {
+        descontoAtivo = 0;
+        cupomNomeAtivo = "";
+        cupomStatus.style.color = '#EF4444';
+        cupomStatus.innerText = '✗ Cupom inválido ou expirado.';
+      }
+
+      atualizarValor();
+    });
+  }
+
+  if (selectPlano) {
+    selectPlano.addEventListener('change', atualizarValor);
+  }
+
+  // 3. ENVIO DE PEDIDOS (WEBHOOK DE PEDIDO)
+  const formPedido = document.getElementById('discord-form');
+  const statusMsgPedido = document.getElementById('form-status');
+  const btnEnviarPedido = document.getElementById('btn-enviar');
+
+  const WEBHOOK_PEDIDO = 'https://discordapp.com/api/webhooks/1551395856261980200/h8vH78AayxlrUNeoWliHvbWskw9beul00kI03FVaY0XHs64eaXyvsTMbgkHwKQ_R_P2p';
+
+  if (formPedido) {
+    formPedido.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      btnEnviarPedido.disabled = true;
+      btnEnviarPedido.innerText = 'Enviando...';
+
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+      const planoSelecionado = selectPlano.options[selectPlano.selectedIndex].getAttribute('data-name');
+      const valorFinal = valorDisplay.innerText;
+      const mensagem = document.getElementById('mensagem').value || 'Nenhum detalhe adicional.';
+
+      const payload = {
+        embeds: [{
+          title: "🚀 Novo Pedido de Site - Lotus Hosting",
+          color: 9133302,
+          fields: [
+            { name: "👤 Nome / Empresa", value: nome, inline: true },
+            { name: "📧 E-mail", value: email, inline: true },
+            { name: "📱 WhatsApp", value: whatsapp, inline: true },
+            { name: "📦 Plano", value: planoSelecionado, inline: false },
+            { name: "🎟️ Cupom Utilizado", value: cupomNomeAtivo ? cupomNomeAtivo : "Nenhum", inline: true },
+            { name: "💰 Valor Final", value: valorFinal, inline: true },
+            { name: "📝 Detalhes do Projeto", value: mensagem, inline: false }
+          ],
+          footer: { text: "Lotus Hosting Website System" },
+          timestamp: new Date()
+        }]
+      };
+
+      try {
+        const response = await fetch(WEBHOOK_PEDIDO, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          statusMsgPedido.style.color = '#10B981';
+          statusMsgPedido.innerText = 'Pedido enviado com sucesso! Entraremos em contacto brevemente.';
+          statusMsgPedido.style.display = 'block';
+          formPedido.reset();
+          descontoAtivo = 0;
+          cupomNomeAtivo = "";
+          cupomStatus.innerText = '';
+          atualizarValor();
+        } else {
+          throw new Error('Erro ao enviar');
+        }
+      } catch (err) {
+        statusMsgPedido.style.color = '#EF4444';
+        statusMsgPedido.innerText = 'Erro ao enviar o pedido. Tente novamente.';
+        statusMsgPedido.style.display = 'block';
+      } finally {
+        btnEnviarPedido.disabled = false;
+        btnEnviarPedido.innerText = 'Enviar Pedido de Orçamento';
+      }
+    });
+  }
+
+  // 4. ENVIO DE AVALIAÇÕES (WEBHOOK DE AVALIAÇÃO)
+  const formAvaliacao = document.getElementById('avaliacao-form');
+  const statusMsgAvaliacao = document.getElementById('avaliacao-form-status');
+  const btnEnviarAvaliacao = document.getElementById('btn-enviar-avaliacao');
+
+  const WEBHOOK_AVALIACAO = 'https://discordapp.com/api/webhooks/1551376430896775188/mpG-b0IAdvvw5B30Hhcz6GHGdEsYQr5tw91xUp_RX3_MKfi2xLS_SRGuOPKIi3THlzku';
+
+  if (formAvaliacao) {
+    formAvaliacao.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      btnEnviarAvaliacao.disabled = true;
+      btnEnviarAvaliacao.innerText = 'Enviando...';
+
+      const nomeAvaliacao = document.getElementById('avaliacao-nome').value;
+      const servicoAvaliacao = document.getElementById('avaliacao-servico').value;
+      const notaAvaliacao = document.getElementById('avaliacao-nota').value;
+      const comentarioAvaliacao = document.getElementById('avaliacao-comentario').value;
+
+      const payload = {
+        embeds: [{
+          title: "⭐ Nova Avaliação do Cliente - Lotus Hosting",
+          color: 16761035, // Cor amarelada/dourada para avaliações
+          fields: [
+            { name: "👤 Cliente / Nick", value: nomeAvaliacao, inline: true },
+            { name: "🛠️ Serviço Contratado", value: servicoAvaliacao, inline: true },
+            { name: "⭐ Classificação", value: notaAvaliacao, inline: false },
+            { name: "💬 Avaliação / Depoimento", value: comentarioAvaliacao, inline: false }
+          ],
+          footer: { text: "Sistema de Avaliações - Lotus Hosting" },
+          timestamp: new Date()
+        }]
+      };
+
+      try {
+        const response = await fetch(WEBHOOK_AVALIACAO, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          statusMsgAvaliacao.style.color = '#10B981';
+          statusMsgAvaliacao.innerText = 'Muito obrigado pela sua avaliação! Seu feedback foi enviado com sucesso.';
+          statusMsgAvaliacao.style.display = 'block';
+          formAvaliacao.reset();
+        } else {
+          throw new Error('Erro ao enviar avaliação');
+        }
+      } catch (err) {
+        statusMsgAvaliacao.style.color = '#EF4444';
+        statusMsgAvaliacao.innerText = 'Erro ao enviar a avaliação. Tente novamente.';
+        statusMsgAvaliacao.style.display = 'block';
+      } finally {
+        btnEnviarAvaliacao.disabled = false;
+        btnEnviarAvaliacao.innerText = 'Enviar Avaliação';
+      }
+    });
+  }
+});
