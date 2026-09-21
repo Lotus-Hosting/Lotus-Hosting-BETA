@@ -1,171 +1,227 @@
-// CONFIGURAÇÃO DO DISCORD WEBHOOK
-const DISCORD_WEBHOOK_URL = "https://discordapp.com/api/webhooks/1550215201943588997/_hzE5cEiOqcAU-wpCp_7gDa8GbA_KqC_Y8xYq9wz6C9cfvM6eemAoa_xGbtkmNa9dUHd";
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. TROCA DE PÁGINAS (SPA)
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.page-section');
+  const selectPlano = document.getElementById('tipo_projeto');
 
-// LISTA DE CUPONS CONFIGURADOS
-const COUPONS = {
-  "VIN30": { type: "percent", value: 30 },    // 30% de desconto (Primeiro parceiro!)
-  "LOTUS15": { type: "percent", value: 15 }   // 15% de desconto
-};
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
 
-const PLAN_PRICES = {
-  "Starter Site": 499,
-  "Pro Business": 899,
-  "Custom / E-commerce": 0
-};
-
-let appliedCoupon = null;
-
-// NAVEGAÇÃO ENTRE SUBPÁGINAS / ABAS
-function switchTab(tabId, event) {
-  if (event) event.preventDefault();
-
-  document.querySelectorAll('.tab-content').forEach(tab => {
-    tab.classList.remove('active');
-  });
-
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.classList.remove('active');
-  });
-
-  const targetTab = document.getElementById(tabId);
-  if (targetTab) {
-    targetTab.classList.add('active');
-  }
-
-  const activeLink = document.querySelector(`.nav-link[href="#${tabId}"]`);
-  if (activeLink) {
-    activeLink.classList.add('active');
-  }
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// SELECIONAR PLANO E IR DIRETO PARA O FORMULÁRIO
-function selectPlan(planName) {
-  const planSelect = document.getElementById('plan');
-  if (planSelect) {
-    planSelect.value = planName;
-    updatePriceDisplay();
-  }
-  switchTab('contato');
-}
-
-// LÓGICA DE APLICAÇÃO DE CUPOM
-function applyCoupon() {
-  const input = document.getElementById('couponInput');
-  const couponCode = input.value.trim().toUpperCase();
-  const statusDiv = document.getElementById('couponStatus');
-
-  if (!couponCode) {
-    statusDiv.className = "coupon-status error";
-    statusDiv.innerText = "Por favor, insira um código de cupom.";
-    return;
-  }
-
-  if (COUPONS[couponCode]) {
-    appliedCoupon = { code: couponCode, ...COUPONS[couponCode] };
-    statusDiv.className = "coupon-status success";
-    statusDiv.innerText = `✓ Cupom ${couponCode} aplicado com sucesso! (${appliedCoupon.value}% OFF)`;
-  } else {
-    appliedCoupon = null;
-    statusDiv.className = "coupon-status error";
-    statusDiv.innerText = "❌ Cupom inválido ou expirado.";
-  }
-
-  updatePriceDisplay();
-}
-
-// ATUALIZAÇÃO DO PREÇO FINAL NA TELA
-function updatePriceDisplay() {
-  const planSelect = document.getElementById('plan');
-  const priceDisplay = document.getElementById('finalPriceDisplay');
-  const selectedPlan = planSelect.value;
-  const basePrice = PLAN_PRICES[selectedPlan] || 0;
-
-  if (basePrice === 0) {
-    priceDisplay.innerText = "Sob Consulta";
-    return;
-  }
-
-  let finalPrice = basePrice;
-
-  if (appliedCoupon) {
-    if (appliedCoupon.type === "percent") {
-      finalPrice = basePrice - (basePrice * (appliedCoupon.value / 100));
-    } else if (appliedCoupon.type === "fixed") {
-      finalPrice = Math.max(0, basePrice - appliedCoupon.value);
-    }
-  }
-
-  priceDisplay.innerText = `R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
-}
-
-// ENVIO DE NOTIFICAÇÃO PARA O DISCORD VIA WEBHOOK
-async function sendDiscordNotification(event) {
-  event.preventDefault();
-
-  const submitBtn = document.getElementById('submitBtn');
-  const statusDiv = document.getElementById('formStatus');
-
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-  const plan = document.getElementById('plan').value;
-  const details = document.getElementById('details').value || "Nenhum detalhe informado.";
-  const finalPriceText = document.getElementById('finalPriceDisplay').innerText;
-
-  submitBtn.disabled = true;
-  submitBtn.innerText = "Enviando...";
-  statusDiv.innerText = "";
-
-  const couponText = appliedCoupon ? `${appliedCoupon.code} (${appliedCoupon.value}% OFF)` : "Nenhum";
-
-  // Formatação da mensagem (Embed do Discord)
-  const discordData = {
-    username: "Lotus Hosting Bot",
-    avatar_url: "https://i.imgur.com/4M34hi2.png",
-    embeds: [
-      {
-        title: "🚀 Nova Solicitação de Projeto!",
-        color: 10979834, // Cor Roxo Claro (#A78BFA)
-        fields: [
-          { name: "👤 Cliente / Empresa", value: name, inline: true },
-          { name: "📦 Plano Escolhido", value: plan, inline: true },
-          { name: "🏷️ Cupom Aplicado", value: couponText, inline: true },
-          { name: "💰 Valor Final", value: finalPriceText, inline: true },
-          { name: "📧 E-mail", value: email, inline: true },
-          { name: "📱 WhatsApp / Telefone", value: phone, inline: true },
-          { name: "📝 Detalhes do Projeto", value: details }
-        ],
-        footer: { text: "Lotus Hosting Hub • Sistema Automático" },
-        timestamp: new Date().toISOString()
+      if (link.getAttribute('target') === '_blank' || (href && href.startsWith('http'))) {
+        return;
       }
-    ]
-  };
 
-  try {
-    const response = await fetch(DISCORD_WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(discordData)
+      e.preventDefault();
+      if (!href || !href.startsWith('#')) return;
+
+      const targetId = href.replace('#', '');
+
+      // Seleção automática do plano ao clicar num card
+      const planName = link.getAttribute('data-plan');
+      if (planName && selectPlano) {
+        for (let option of selectPlano.options) {
+          const nameAttribute = option.getAttribute('data-name');
+          if (nameAttribute && nameAttribute.includes(planName)) {
+            option.selected = true;
+            atualizarValor();
+            break;
+          }
+        }
+      }
+
+      sections.forEach(sec => sec.classList.remove('active'));
+      navLinks.forEach(l => l.classList.remove('active'));
+
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        const menuMatch = document.querySelectorAll(`.nav-menu a[href="#${targetId}"]`);
+        menuMatch.forEach(m => m.classList.add('active'));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
+  });
 
-    if (response.ok || response.status === 204) {
-      statusDiv.className = "form-status success";
-      statusDiv.innerText = "✓ Pedido enviado com sucesso! Entraremos em contato em breve.";
-      document.getElementById('orderForm').reset();
-      appliedCoupon = null;
-      document.getElementById('couponStatus').innerText = "";
-      updatePriceDisplay();
-    } else {
-      throw new Error("Erro na resposta do servidor");
+  // 2. SISTEMA DE PREÇOS E CUPONS DE DESCONTO
+  const cupomInput = document.getElementById('cupom_input');
+  const btnCupom = document.getElementById('btn-cupom');
+  const cupomStatus = document.getElementById('cupom-status');
+  const valorDisplay = document.getElementById('valor-estimado');
+
+  let descontoAtivo = 0;
+  let cupomNomeAtivo = "";
+
+  function atualizarValor() {
+    if (!selectPlano || !valorDisplay) return;
+    
+    const precoBase = parseFloat(selectPlano.value);
+
+    if (precoBase === 0) {
+      valorDisplay.innerText = "Sob Consulta";
+      return;
     }
-  } catch (error) {
-    statusDiv.className = "form-status error";
-    statusDiv.innerText = "❌ Ocorreu um erro ao enviar. Tente novamente mais tarde.";
-    console.error("Erro Discord Webhook:", error);
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.innerText = "Enviar Solicitação";
+
+    const valorComDesconto = precoBase * (1 - descontoAtivo);
+    valorDisplay.innerText = `R$ ${valorComDesconto.toFixed(2).replace('.', ',')}`;
   }
-}
+
+  // APLICAÇÃO DE CUPOM
+  if (btnCupom) {
+    btnCupom.addEventListener('click', () => {
+      const codigo = cupomInput.value.trim().toUpperCase();
+
+      if (codigo === 'VIN30') {
+        descontoAtivo = 0.30;
+        cupomNomeAtivo = 'VIN30';
+        cupomStatus.style.color = '#10B981';
+        cupomStatus.innerText = '✓ Cupom VIN30 aplicado com sucesso! (30% OFF)';
+      } else if (codigo === 'LOTUS15') {
+        descontoAtivo = 0.15;
+        cupomNomeAtivo = 'LOTUS15';
+        cupomStatus.style.color = '#10B981';
+        cupomStatus.innerText = '✓ Cupom LOTUS15 aplicado com sucesso! (15% OFF)';
+      } else {
+        descontoAtivo = 0;
+        cupomNomeAtivo = "";
+        cupomStatus.style.color = '#EF4444';
+        cupomStatus.innerText = '✗ Cupom inválido ou expirado.';
+      }
+
+      atualizarValor();
+    });
+  }
+
+  if (selectPlano) {
+    selectPlano.addEventListener('change', atualizarValor);
+  }
+
+  // 3. ENVIO DE PEDIDOS (WEBHOOK DE PEDIDO)
+  const formPedido = document.getElementById('discord-form');
+  const statusMsgPedido = document.getElementById('form-status');
+  const btnEnviarPedido = document.getElementById('btn-enviar');
+
+  const WEBHOOK_PEDIDO = 'https://discordapp.com/api/webhooks/1551395856261980200/h8vH78AayxlrUNeoWliHvbWskw9beul00kI03FVaY0XHs64eaXyvsTMbgkHwKQ_R_P2p';
+
+  if (formPedido) {
+    formPedido.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      btnEnviarPedido.disabled = true;
+      btnEnviarPedido.innerText = 'Enviando...';
+
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+      const planoSelecionado = selectPlano.options[selectPlano.selectedIndex].getAttribute('data-name');
+      const valorFinal = valorDisplay.innerText;
+      const mensagem = document.getElementById('mensagem').value || 'Nenhum detalhe adicional.';
+
+      const payload = {
+        embeds: [{
+          title: "🚀 Novo Pedido de Site - Lotus Hosting",
+          color: 9133302,
+          fields: [
+            { name: "👤 Nome / Empresa", value: nome, inline: true },
+            { name: "📧 E-mail", value: email, inline: true },
+            { name: "📱 WhatsApp", value: whatsapp, inline: true },
+            { name: "📦 Plano", value: planoSelecionado, inline: false },
+            { name: "🎟️ Cupom Utilizado", value: cupomNomeAtivo ? cupomNomeAtivo : "Nenhum", inline: true },
+            { name: "💰 Valor Final", value: valorFinal, inline: true },
+            { name: "📝 Detalhes do Projeto", value: mensagem, inline: false }
+          ],
+          footer: { text: "Lotus Hosting Website System" },
+          timestamp: new Date()
+        }]
+      };
+
+      try {
+        const response = await fetch(WEBHOOK_PEDIDO, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          statusMsgPedido.style.color = '#10B981';
+          statusMsgPedido.innerText = 'Pedido enviado com sucesso! Entraremos em contacto brevemente.';
+          statusMsgPedido.style.display = 'block';
+          formPedido.reset();
+          descontoAtivo = 0;
+          cupomNomeAtivo = "";
+          cupomStatus.innerText = '';
+          atualizarValor();
+        } else {
+          throw new Error('Erro ao enviar');
+        }
+      } catch (err) {
+        statusMsgPedido.style.color = '#EF4444';
+        statusMsgPedido.innerText = 'Erro ao enviar o pedido. Tente novamente.';
+        statusMsgPedido.style.display = 'block';
+      } finally {
+        btnEnviarPedido.disabled = false;
+        btnEnviarPedido.innerText = 'Enviar Pedido de Orçamento';
+      }
+    });
+  }
+
+  // 4. ENVIO DE AVALIAÇÕES (WEBHOOK DE AVALIAÇÃO)
+  const formAvaliacao = document.getElementById('avaliacao-form');
+  const statusMsgAvaliacao = document.getElementById('avaliacao-form-status');
+  const btnEnviarAvaliacao = document.getElementById('btn-enviar-avaliacao');
+
+  const WEBHOOK_AVALIACAO = 'https://discordapp.com/api/webhooks/1551376430896775188/mpG-b0IAdvvw5B30Hhcz6GHGdEsYQr5tw91xUp_RX3_MKfi2xLS_SRGuOPKIi3THlzku';
+
+  if (formAvaliacao) {
+    formAvaliacao.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      btnEnviarAvaliacao.disabled = true;
+      btnEnviarAvaliacao.innerText = 'Enviando...';
+
+      const nomeAvaliacao = document.getElementById('avaliacao-nome').value;
+      const servicoAvaliacao = document.getElementById('avaliacao-servico').value;
+      const notaAvaliacao = document.getElementById('avaliacao-nota').value;
+      const comentarioAvaliacao = document.getElementById('avaliacao-comentario').value;
+
+      const payload = {
+        embeds: [{
+          title: "⭐ Nova Avaliação do Cliente - Lotus Hosting",
+          color: 16761035, // Cor amarelada/dourada para avaliações
+          fields: [
+            { name: "👤 Cliente / Nick", value: nomeAvaliacao, inline: true },
+            { name: "🛠️ Serviço Contratado", value: servicoAvaliacao, inline: true },
+            { name: "⭐ Classificação", value: notaAvaliacao, inline: false },
+            { name: "💬 Avaliação / Depoimento", value: comentarioAvaliacao, inline: false }
+          ],
+          footer: { text: "Sistema de Avaliações - Lotus Hosting" },
+          timestamp: new Date()
+        }]
+      };
+
+      try {
+        const response = await fetch(WEBHOOK_AVALIACAO, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          statusMsgAvaliacao.style.color = '#10B981';
+          statusMsgAvaliacao.innerText = 'Muito obrigado pela sua avaliação! Seu feedback foi enviado com sucesso.';
+          statusMsgAvaliacao.style.display = 'block';
+          formAvaliacao.reset();
+        } else {
+          throw new Error('Erro ao enviar avaliação');
+        }
+      } catch (err) {
+        statusMsgAvaliacao.style.color = '#EF4444';
+        statusMsgAvaliacao.innerText = 'Erro ao enviar a avaliação. Tente novamente.';
+        statusMsgAvaliacao.style.display = 'block';
+      } finally {
+        btnEnviarAvaliacao.disabled = false;
+        btnEnviarAvaliacao.innerText = 'Enviar Avaliação';
+      }
+    });
+  }
+});
