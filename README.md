@@ -14,6 +14,8 @@ Plataforma web moderna e responsiva para a **Lotus Hosting**, voltada para a div
 
 ---
 
+nosso site 📎 : https://Lotus-Hosting.github.io/Lotus-Hosting-BETA
+
 ## ⚡ Funcionalidades
 
 - **Navegação Dinâmica (SPA):** Transição instantânea entre as seções (*Início*, *Planos*, *Diferenciais* e *Pedir Site*) sem recarregar o navegador.
